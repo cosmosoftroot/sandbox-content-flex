@@ -1,0 +1,37 @@
+.container-field{
+  margin-bottom: 21px;
+}
+
+.container-field__wrap-input{
+  border-bottom: 1px solid #2C2A29;
+  box-sizing: border-box;
+}
+
+.container-field__input-select{
+  width: 100%;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* .container-field::after{
+  content: "prueba";
+}
+
+.container-field__input-select{
+  border: none;
+  width: 100%;
+  outline: none;
+}
+
+.container-field__input-select::after{
+  content: "prueba";
+}
+
+.container-field__input-select:focus{
+  border: none;
+  border-bottom: 1px solid #FDDA24;
+  width: 100%;
+  outline: none;
+} */

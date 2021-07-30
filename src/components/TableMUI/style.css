@@ -1,0 +1,5 @@
+.sticky-col{
+  position: sticky;
+  left: 0;
+  background: white;
+}

@@ -1,0 +1,8 @@
+.container-form{
+  width: 500px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid gray;
+  margin: 100px auto;
+}
+
