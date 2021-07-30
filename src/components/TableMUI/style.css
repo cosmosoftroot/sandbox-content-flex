@@ -1,5 +1,12 @@
-.sticky-col{
+.sticky-col, .sticky-header-col{
   position: sticky;
   left: 0;
   background: white;
+}
+.sticky-header-col{
+  z-index: 3 !important;
+}
+
+.MuiTableCell-stickyHeader.header-table{
+  background-color: #F4F4F4;
 }

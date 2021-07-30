@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -10,28 +10,29 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import './style.css'
 
+
 const columns = [
-  { id: 'name', label: 'Name', minWidth: 170 },
-  { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
+  { id: 'name', label: 'Name', minWidth: 100 },
+  { id: 'code', label: 'ISO\u00a0Code', minWidth: 50 },
   {
     id: 'population',
     label: 'Population',
-    minWidth: 170,
-    align: 'right',
+    minWidth: 80,
+    align: 'left',
     format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'size',
     label: 'Size\u00a0(km\u00b2)',
     minWidth: 170,
-    align: 'right',
+    align: 'left',
     format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'density',
     label: 'Density',
     minWidth: 170,
-    align: 'right',
+    align: 'left',
     format: (value) => value.toFixed(2),
   },
 ];
@@ -63,6 +64,7 @@ const useStyles = makeStyles({
   root: {
     maxWidth:'1076px',
     width: '100%',
+    margin: 'auto'
   },
   container: {
     maxHeight: 440,
@@ -70,9 +72,16 @@ const useStyles = makeStyles({
 });
 
 export default function StickyHeadTable() {
+
+
+  const [scrollTop, setScrollTop] = React.useState(0)
+  const [scrollLeft, setScrollLeft] = React.useState(0)
+  const [hasBlockTop, setHasBlockTop] = React.useState(true)
+  
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -86,15 +95,27 @@ export default function StickyHeadTable() {
   useEffect(()=>{
     const tableContainer = document.getElementById('table-container')
     tableContainer.addEventListener('scroll',(ev)=>{
-      console.log(ev.currentTarget.scrollTop)
-      console.log(ev.currentTarget.scrollLeft)
+      setScrollTop(ev.currentTarget.scrollTop)
+      setScrollLeft(ev.currentTarget.scrollLeft)
     })
   },[])
 
+  /*
+  useEffect(()=>{
+
+    setHasBlockTop(true)
+  },[scrollTop])
+
+  useEffect(()=>{
+    setHasBlockTop(false)
+    
+  },[scrollLeft])
+
+*/
   return (
     <Paper className={classes.root}>
       <TableContainer id="table-container" className={classes.container}>
-        <Table stickyHeader aria-label="sticky table">
+        <Table stickyHeader={hasBlockTop} aria-label="sticky table">
           <TableHead>
             <TableRow>
               {columns.map((column, index) => (
@@ -102,7 +123,7 @@ export default function StickyHeadTable() {
                   key={column.id}
                   align={column.align}
                   style={{ minWidth: column.minWidth }}
-                  className={index === 0 ? "sticky-col": ""}
+                  className={index === 0 ? "sticky-header-col header-table": "header-table"}
                 >
                   {console.log('index',index)}
                   {column.label}
