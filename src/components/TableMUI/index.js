@@ -114,7 +114,7 @@ export default function StickyHeadTable() {
 */
   return (
     <Paper className={classes.root}>
-      <TableContainer id="table-container" className={classes.container}>
+      <TableContainer id="table-container" className="table-container">
         <Table stickyHeader={hasBlockTop} aria-label="sticky table">
           <TableHead>
             <TableRow>

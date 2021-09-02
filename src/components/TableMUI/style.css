@@ -1,12 +1,43 @@
+.root{
+  max-width:'1076px';
+  width: '100%';
+  margin: 'auto'
+}
+
+.table-container{
+  max-height: 440px;
+}
+
+
 .sticky-col, .sticky-header-col{
   position: sticky;
   left: 0;
-  background: white;
 }
+
+.sticky-col{
+  background: white;  
+}
+
 .sticky-header-col{
   z-index: 3 !important;
+  background: #f7f7f7 !important;
 }
 
 .MuiTableCell-stickyHeader.header-table{
   background-color: #F4F4F4;
 }
+
+.table-container::-webkit-scrollbar-thumb {
+  background: #ffd300;
+  border-radius: 6px;
+}
+
+/* .table-container::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: #000;
+  border-radius: 10px;
+} */
